@@ -12,12 +12,6 @@ const getTasks = async (req, res) => {
       .skip((page - 1) * limit)
       .exec();
 
-    if (page > 1 && tasks.length === 0) {
-      return res
-        .status(404)
-        .json({ success: false, message: "No tasks found." });
-    }
-
     return res.status(200).json({ success: true, tasks });
   } catch (error) {
     console.error(error);
