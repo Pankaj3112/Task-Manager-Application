@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 import { useRecoilState } from "recoil";
 import { taskListState } from "../recoil";
 
-const Task = ({ task }) => {
+const Task = React.memo(({ task }) => {
   const [tasks, setTasks] = useRecoilState(taskListState);
   const [editable, setEditable] = useState(false);
   const [editedTask, setEditedTask] = useState(task);
@@ -22,7 +22,7 @@ const Task = ({ task }) => {
         );
 
         setTasks(tasks.filter((t) => t._id !== task._id));
-		toast.success("Task deleted successfully");
+        toast.success("Task deleted successfully");
       } catch (err) {
         toast.error(err.response.data.message);
       }
@@ -54,7 +54,7 @@ const Task = ({ task }) => {
           tasks.map((t) => (t._id === task._id ? response.data.task : t))
         );
         setEditable(false);
-		toast.success("Task updated successfully");
+        toast.success("Task updated successfully");
       } catch (err) {
         toast.error(err.response.data.message);
       }
@@ -177,6 +177,6 @@ const Task = ({ task }) => {
       )}
     </div>
   );
-};
+});
 
 export default Task;

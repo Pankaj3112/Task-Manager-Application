@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const user = useRecoilValue(userSelector);
-  console.log(user);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
