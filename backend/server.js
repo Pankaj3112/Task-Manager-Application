@@ -19,13 +19,13 @@ app.use("/api/auth", require("./routes/auth"));
 app.use("/api/tasks", require("./routes/tasks"));
 
 app.use("/", (req, res) => {
-  return res.status(200).json({ message: "Server is up and running." });
+	return res.status(200).json({ message: "Server is up and running." });
 });
 
-// Start the server
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+	console.log(`Server is running on port ${PORT}`);
 });
+
 
 export default app;
